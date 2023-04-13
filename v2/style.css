@@ -25,6 +25,10 @@ a {
   text-decoration: none;
 }
 
+/* when a 'fancy' word is hovered, change opacity for all other words */
+.word:not(.fancy) {
+  transition-duration: 400ms;
+}
 
 
 /* when a 'fancy' word is hovered, change opacity for all other words */
@@ -34,9 +38,9 @@ a {
 
 .fancy>.letter {
   display: inline-block;
-  transition: transform 350ms ease;
+  transition: transform 200ms ease-in-out;
 }
 
 .fancy:hover>.letter {
-  transition-duration: 800ms;
+  transition-duration: 400ms;
 }

@@ -22,8 +22,8 @@ enhance("town");
 //returns randomized values for 'translate' style property
 function translateRandom() {
   let posX = (Math.floor(Math.random() * 8) + 2) * (Math.round(Math.random()) ? 1 : -1); //random number between -9 and 9, but not between -2 and 2
-  let posY = (Math.floor(Math.random() * 60) + 10) * (Math.round(Math.random()) ? 1 : -1); //random number between -70 and 70, but not between -10 and 10
-  let rotateDeg = (Math.floor(Math.random() * 42) + 8) * (Math.round(Math.random()) ? 1 : -1); //random number between -50 and 50, but not between -8 and 8
+  let posY = (Math.floor(Math.random() * 40) + 10) * (Math.round(Math.random()) ? 1 : -1); //random number between -50 and 50, but not between -10 and 10
+  let rotateDeg = (Math.floor(Math.random() * 32) + 8) * (Math.round(Math.random()) ? 1 : -1); //random number between -40 and 40, but not between -8 and 8
   return 'translate(' + posX + '%, ' + posY + '%) rotate(' + rotateDeg + 'deg)'
 }
 
@@ -34,12 +34,16 @@ const fancyWords = Array.from(document.getElementsByClassName("fancy"));
 fancyWords.forEach(word => {
   //transforms every child letter upon mouseover
   word.addEventListener("mouseover", function () {
-    word.childNodes.forEach(letter => letter.style.transform = translateRandom()
+    word.childNodes.forEach(letter => {
+      letter.style.transform = translateRandom();
+      letter.style.position = "relative";
+      letter.style.zIndex = -1
+    }
     )
   });
   //removes every transform property on every child letter upon mouseout
   word.addEventListener("mouseout", function () {
-    word.childNodes.forEach(letter => letter.style.removeProperty("transform")
-    )
+    word.childNodes.forEach(letter => letter.style.removeProperty("transform"));
+    
   });
 });
